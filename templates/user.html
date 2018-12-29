@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}{{name}}{% endblock %}
+<!--{% block blockname %}内容{% endblock %} 定义块，block 开始，后面跟要定义的块的名字(blockname),endblock结束-->
+
+{% block page_content %}
+<div class="page-header">
+    <h1>Hello, {{name}}!</h1><!--{{name}} jinja2模板中的变量，他是一种特殊的占位符，告诉模板引擎这个位置的值从渲染模板时使用的数据中获取。{{name|safe}} 可以使用过滤器修改变量(对变量进行转义)，safe过滤器渲染值时不转义-->
+</div>
+{% endblock %}
+
