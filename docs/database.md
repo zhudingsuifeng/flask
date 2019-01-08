@@ -10,7 +10,7 @@ URN = Universal Resource Name 统一资源名称
 
 这三者的关系如下图：
 
-[URI组成](imgs/uri.png)
+![URI组成](imgs/uri.png)
 
 URI 分为三种，URL、URN或者(URL和URN)
 
