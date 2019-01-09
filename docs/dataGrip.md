@@ -33,3 +33,7 @@ select count(*) from POS_TRANSMST;
 database展开，顶部菜单栏最右边有个黑色的按钮，打开sql命令交互界面，就可以在里面输入sql语句了。
 
 sql交互窗口，绿色箭头，执行sql语句,带时钟文档代表历史sql语句。
+
+在oracle中的select 有关date条件时，需要指定格式，to_date('2013-2-26 11:07:25' , 'yyyy-mm-dd hh24:mi:ss')
+
+select * from table where date = to_date('2013-2-26 11:07:25' , 'yyyy-mm-dd hh24:mi:ss');
