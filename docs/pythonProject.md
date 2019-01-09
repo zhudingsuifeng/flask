@@ -6,4 +6,4 @@ __all__是一个字符串list,用来定义模块中对于from XXX import * 时�
 
 类方法 <unbound method X.x>
 
-实例方法  <bound method X.x of <__main__.X object at 0x.....>>
+实例方法  <bound method X.x of <__main__.X object at 0x.....>

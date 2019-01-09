@@ -18,6 +18,8 @@ URI标记一个网络资源，URL标记了一个www互联网资源的访问地�
 
 类型这个术语表示程序使用的持久化实体。在ORM中，模型一般是一个python类，类中的属性对应数据库表中的列。
 
+抽象层，也称为对象关系映射(Object-Relational Mapper, ORM)或对象文档映射(Object-Document Mapper, ODM),在用户不知觉的情况下把高层的面向对象操作转换成低层的数据库命令。
+
 类变量__tablename__定义在数据库中使用的表名。如果没有定义__tablename__,会使用一个默认名字，最好自己指定。其余变量都是该模型的属性，被定义为db.Column类的实例。
 
 ### 安装python SQLAlchemy mysql 支持
@@ -83,4 +85,3 @@ user = db.session.query(user).filter_by(id=1).first()
 db.session.delete(user)
 db.session.commit()
 ```
-
