@@ -85,13 +85,51 @@ user = db.session.query(user).filter_by(id=1).first()
 db.session.delete(user)
 db.session.commit()
 ```
-```
-(venv)$pip install 
-```
 
 ### mongodb
 
 ### oracle
+
+SQLAlchemy并不是数据库驱动，python访问oracle数据库的驱动是cx_Oracle,但是这个驱动依赖于Oracle instant client.
+
+所以python如果想通过SQLAlchemy库访问oracle数据库，那么需要先安装Oracle instant client,再安装cx_Oracle和SQLAlchemy.
+
+去官网下载安装包，注意版本对应。
+
+https://www.oracle.com/technetwork/topics/linuxx86-64soft-092277.html
+
+支持cx_Oracle需要下载
+oracle-instantclient12.1-basic-12.1.0.2.0-1.x86_64.rpm 
+oracle-instantclient12.1-devel-12.1.0.2.0-1.x86_64.rpm
+两个包，注意自己的版本。
+
+在dataGrip查看oracle 版本：
+
+```
+select * from v$version;
+# oracle 版本信息
+Oracle Database 11g Enterprise Edition Release 11.2.0.4.0 - 64bit Production
+PL/SQL Release 11.2.0.4.0 - Production
+"CORE	11.2.0.4.0	Production"
+TNS for Linux: Version 11.2.0.4.0 - Production
+NLSRTL Version 11.2.0.4.0 - Production
+```
+
+basic包含所有的oracle client lib/bin文件。
+
+devel包含oracle client 外部接口的头文件。
+
+```
+# 通过zip文件安装basic
+cp instantclient-basic-linux.x64.zip /opt/oracle
+cd /opt/oracle
+unzip instantclient-basic-linux.x64.zip
+cd /opt/oracle/instantclient_11_2
+ln -s libclntsh.so.11.1 libclntsh.so
+ln -s libocci.so.11.1 libocci.so
+
+apt install 
+```
 
 ```
 (venv)$pip install cx_Oracle
