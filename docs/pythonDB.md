@@ -1,4 +1,4 @@
-## 数据库的使用
+## python 连接操作数据库
 
 URI统一资源标识符(Uniform Resource Identifier)是一个用于标识某一互联网资源名称的字符串。
 
@@ -22,12 +22,12 @@ URI标记一个网络资源，URL标记了一个www互联网资源的访问地�
 
 类变量__tablename__定义在数据库中使用的表名。如果没有定义__tablename__,会使用一个默认名字，最好自己指定。其余变量都是该模型的属性，被定义为db.Column类的实例。
 
-### 安装python SQLAlchemy mysql 支持
+### mysql
 
 ```
 $virtualenv -p /usr/bin/python3 venv
 $source venv/bin/activate
-(venv)$pip install pymysql   # python3 mysql 支持
+(venv)$pip install pymysql            # python3 mysql 支持
 (venv)$pip install flask-sqlalchemy   # flask sqlalchemy支持
 ```
 
@@ -84,4 +84,15 @@ db.session.commit()
 user = db.session.query(user).filter_by(id=1).first()
 db.session.delete(user)
 db.session.commit()
+```
+```
+(venv)$pip install 
+```
+
+### mongodb
+
+### oracle
+
+```
+(venv)$pip install cx_Oracle
 ```
