@@ -25,11 +25,11 @@ db = oracle.connect('HEX_SPCC/HEX_SPCC@frps.hexcloud.cn:31733/HEXDB')
 
 cursor = db.cursor()
 
-cursor.execute("select * from POS_TRANSMST where BIZDT = to_date('2017-12-31 00:00:00' , 'yyyy-mm-dd hh24:mi:ss') and DEPTCD = '170407'")
+cursor.execute("select count(*) from POS_TRANSMST where BIZDT = to_date('2017-12-31 00:00:00' , 'yyyy-mm-dd hh24:mi:ss') and DEPTCD = '170407'")
 
 data = cursor.fetchone()
 
-print(data)
+print('BIZDT : 2017-12-31 00:00:00, DEPTCD : 170407, SALE :', data[0])
 
 cursor.close()
 db.close()
