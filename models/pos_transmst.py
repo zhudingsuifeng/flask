@@ -4,7 +4,7 @@ from sqlalchemy.schema import FetchedValue
 from flask_sqlalchemy import SQLAlchemy
 
 
-db = SQLAlchemy()
+db = SQLAlchemy()   # 创建SQLAlchemy对象
 
 
 class PosTransmst(db.Model):
