@@ -103,9 +103,8 @@ oracle-instantclient12.1-basic-12.1.0.2.0-1.x86_64.rpm
 oracle-instantclient12.1-devel-12.1.0.2.0-1.x86_64.rpm
 两个包，注意自己的版本。
 
-在dataGrip查看oracle 版本：
-
 ```
+# 在dataGrip查看oracle 版本
 select * from v$version;
 # oracle 版本信息
 Oracle Database 11g Enterprise Edition Release 11.2.0.4.0 - 64bit Production
@@ -113,14 +112,8 @@ PL/SQL Release 11.2.0.4.0 - Production
 "CORE	11.2.0.4.0	Production"
 TNS for Linux: Version 11.2.0.4.0 - Production
 NLSRTL Version 11.2.0.4.0 - Production
-```
 
-basic包含所有的oracle client lib/bin文件。
-
-devel包含oracle client 外部接口的头文件。
-
-```
-# 通过zip文件安装basic
+# 通过zip文件安装basic,所有其他需求都要先安装basic，另外要按照官方教程安装。
 cp instantclient-basic-linux.x64.zip /opt/oracle
 cd /opt/oracle
 unzip instantclient-basic-linux.x64.zip
@@ -128,9 +121,31 @@ cd /opt/oracle/instantclient_11_2
 ln -s libclntsh.so.11.1 libclntsh.so
 ln -s libocci.so.11.1 libocci.so
 
-apt install 
-```
+apt search libaio
+libaio-dev/bionic 0.3.110-5 amd64
+  Linux kernel AIO access library - development files
 
-```
+libaio1/bionic,now 0.3.110-5 amd64 [installed,automatic]
+  Linux kernel AIO access library - shared library
+
+apt install libaio1
+# 如果Instant Client是系统中安装的唯一Oracle软件，更新运行时连接路径。
+sudo sh -c "echo /opt/oracle/instantclient_11_2 > \
+> /etc/ld.so.conf.d/oracle-instantclient.conf"
+
+sudo ldconfig
+
+# 配置环境变量
+vi ~.profile
+# 在文件末尾添加下列语句
+
+export LD_LIBRARY_PATH=/opt/oracle/instantclient_11_2:$LD_LIBRARY_PATH
+export PATH=/opt/oracle/instantclient_11_2:$PATH
+
+# 使文件生效
+source ~.profile
+
+# 安装libaio包，libaio是linux下的一个异步非阻塞接口
+sudo apt install libaio1
 (venv)$pip install cx_Oracle
 ```
