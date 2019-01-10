@@ -26,6 +26,16 @@ git commit -m 'delete targetfile'
 git push origin works
 ```
 
+### 报错E1101:Instance of ‘SQLAlchemy’ has no ‘Column’ member
+
+这个错误不影响程序的执行，但是编辑器总是报错，影响心情，并且容易引发误解，浪费时间检查程序。
+
+解决方案：code ——>首选项——>设置——>搜索‘pylintArgs’
+
+将“ “python.linting.pylintArgs”: [] ”添加到用户设置，
+
+如： "python.linting.pylintArgs": ["--load-plugins", "pylint_flask"]
+
 ### oracle数据库
 
 ```
@@ -36,5 +46,8 @@ PL/SQL Release 11.2.0.4.0 - Production
 "CORE	11.2.0.4.0	Production"
 TNS for Linux: Version 11.2.0.4.0 - Production
 NLSRTL Version 11.2.0.4.0 - Production
-
 ```
+
+### sqlalchemy
+
+### flask-sqlalchemy
