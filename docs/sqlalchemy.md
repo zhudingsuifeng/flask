@@ -216,3 +216,19 @@ user = session.query(User).order_by(random()).first()
 
 session.close()
 ```
+
+5. 多表关系
+6. 多表查询
+
+### 数据库迁移
+
+sqlalchemy的数据库迁移/升级有两个库支持alembic和sqlalchemy-migrate
+
+alembic实现了类似git/svn的版本管理的控制，我们可以通过alembic维护每次升级数据库的版本
+
+1. 安装
+2. 初始化
+3. 配置
+4. 创建数据库版本
+5. 升级数据库
+6. 通过元数据升级数据库

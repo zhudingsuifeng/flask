@@ -149,3 +149,55 @@ source ~.profile
 sudo apt install libaio1
 (venv)$pip install cx_Oracle
 ```
+
+### python+cx_Oracle 访问oracle
+
+```
+import cx_Oracle as oracle
+
+# 数据库连接,注意连接字符串和使用sqlalchemy有些细微的差别
+db = oracle.connect('HEX_SPCC/HEX_SPCC@frps.hexcloud.cn:31733/HEXDB')
+# 创建游标
+cursor = db.cursor()
+# 执行查询语句
+cursor.execute("select count(*) from POS_TRANSMST where BIZDT = to_date('2017-12-31 00:00:00' , 'yyyy-mm-dd hh24:mi:ss') and DEPTCD = '170407'")
+# 获取数据
+data = cursor.fetchone()
+print('BIZDT : 2017-12-31 00:00:00, DEPTCD : 170407, SALE :', data[0])
+# 关闭游标和连接
+cursor.close()
+db.close()
+```
+
+### python+sqlalchemy 访问oracle
+
+```
+from sqlalchemy import create_engine
+
+# 数据库连接字符串，根据连接的数据库不同，选择不同的连接字符串
+DB_CONNECT_STRING = 'oracle+cx_oracle://HEX_SPCC:HEX_SPCC@frps.hexcloud.cn:31733/HEXDB'
+
+# 创建数据库引擎，echo=True，会打印所有的sql语句
+# engine = create_engine(DB_CONNECT_STRING, echo=True)
+engine = create_engine(DB_CONNECT_STRING)
+
+# 创建一个connection
+with engine.connect() as con:
+    # 执行sql语句，不需要commit
+    rs = con.execute("select count(*) from POS_TRANSMST where BIZDT = to_date('2017-12-31 00:00:00' , 'yyyy-mm-dd hh24:mi:ss') and DEPTCD = '170407'")
+    data = rs.fetchone()[0]
+    print('BIZDT : 2017-12-31 00:00:00, DEPTCD : 170407, SALE :', data)
+```
+
+### 利用sqlacodegen自动生成已有数据表的orm实体类
+
+```
+(venv)pip install sqlacodegen
+(venv)pip install flask-sqlacodegen
+(venv)sqlacodegen --help  # 查看帮助
+# 生成orm实体类
+sqlacodegen --flask --tables pos_transmst oracle+cx_oracle://HEX_SPCC:HEX_SPCC@frps.hexcloud.cn:31733/HEXDB > temp.py
+# --flask use Flask-SQLAlchemy columns
+# --tables 指定数据库中的表，注意后面跟着的表名的大小写
+# > 后面指定python文件名，用来存储orm类
+```

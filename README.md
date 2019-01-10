@@ -51,3 +51,47 @@ NLSRTL Version 11.2.0.4.0 - Production
 ### sqlalchemy
 
 ### flask-sqlalchemy
+
+### sqlacodegen
+
+利用sqlacodegen自动生成已有数据表的orm实体类
+
+```
+(venv)pip install sqlacodegen
+(venv)pip install flask-sqlacodegen
+(venv)sqlacodegen --help
+usage: sqlacodegen [-h] [--version] [--schema SCHEMA] [--tables TABLES]
+                   [--noviews] [--noindexes] [--noconstraints] [--nojoined]
+                   [--noinflect] [--noclasses] [--outfile OUTFILE]
+                   [--nobackrefs] [--flask] [--ignore-cols IGNORE_COLS]
+                   [url]
+
+Generates SQLAlchemy model code from an existing database.
+
+positional arguments:
+  url                   SQLAlchemy url to the database
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             print the version number and exit
+  --schema SCHEMA       load tables from an alternate schema
+  --tables TABLES       tables to process (comma-separated, default: all)
+  --noviews             ignore views
+  --noindexes           ignore indexes
+  --noconstraints       ignore constraints
+  --nojoined            don't autodetect joined table inheritance
+  --noinflect           don't try to convert tables names to singular form
+  --noclasses           don't generate classes, only tables
+  --outfile OUTFILE     file to write output to (default: stdout)
+  --nobackrefs          don't include backrefs
+  --flask               use Flask-SQLAlchemy columns
+  --ignore-cols IGNORE_COLS
+                        Don't check foreign key constraints on specified
+                        columns (comma-separated)
+
+# 生成orm实体类
+sqlacodegen --flask --tables pos_transmst oracle+cx_oracle://HEX_SPCC:HEX_SPCC@frps.hexcloud.cn:31733/HEXDB > temp.py
+# --flask use Flask-SQLAlchemy columns
+# --tables 指定数据库中的表，注意后面跟着的表名的大小写
+# > 后面指定python文件名，用来存储orm类
+```
