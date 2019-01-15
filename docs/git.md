@@ -81,6 +81,9 @@ git merge命令用于合并指定分支到当前分支。
 git branch -d dev
 Deleted branch dev
 
+# 删除远程分支
+git push origin --delete works
+
 git branch
 * master
 ```
