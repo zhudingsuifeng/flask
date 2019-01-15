@@ -33,7 +33,7 @@ git clone git@github.com:zhudingsuifeng/flask.git
 
 每次提交，master分支都会向前移动一步，随着你不断提交，master分支的线也越来越长：
 
-<iframe height=270 width=360 src="../imgs/master-branch-forward.mp4"></iframe>
+<iframe height=270 width=360 src="http://liaoxuefeng.gitee.io/git-resources/master-branch-forward.mp4">
 
 ```
 
