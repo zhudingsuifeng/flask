@@ -89,9 +89,55 @@ optional arguments:
                         Don't check foreign key constraints on specified
                         columns (comma-separated)
 
-# 生成orm实体类
+# oracle生成orm实体类
 sqlacodegen --flask --tables pos_transmst oracle+cx_oracle://HEX_SPCC:HEX_SPCC@frps.hexcloud.cn:31733/HEXDB > temp.py
 # --flask use Flask-SQLAlchemy columns
 # --tables 指定数据库中的表，注意后面跟着的表名的大小写
 # > 后面指定python文件名，用来存储orm类
+
+# 查看mysql的端口号
+mysql> show global variables like 'port';
++---------------+-------+
+| Variable_name | Value |
++---------------+-------+
+| port          | 3306  |
++---------------+-------+
+1 row in set (0.00 sec)
+
+# mysql生成orm实体类
+sqlacodegen --tables student mysql+pymysql://fly:password@localhost：3306/web > temp.py
+# 如果数据库中的表不是通过sqlalchemy创建的表，并不能完全逆向生成orm类，需要手动做些小修改
+
+mysql> desc student;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| id      | int(11)     | YES  |     | NULL    |       |
+| name    | varchar(20) | YES  |     | NULL    |       |
+| age     | int(11)     | YES  |     | NULL    |       |
+| math    | int(11)     | YES  |     | NULL    |       |
+| english | int(11)     | YES  |     | NULL    |       |
+| history | int(11)     | YES  |     | NULL    |       |
+| teacher | varchar(20) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+7 rows in set (0.01 sec)
+
+# 为表添加primary key
+mysql> alter table student add primary key(id);
+Query OK, 0 rows affected (0.15 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| id      | int(11)     | NO   | PRI | NULL    |       |
+| name    | varchar(20) | YES  |     | NULL    |       |
+| age     | int(11)     | YES  |     | NULL    |       |
+| math    | int(11)     | YES  |     | NULL    |       |
+| english | int(11)     | YES  |     | NULL    |       |
+| history | int(11)     | YES  |     | NULL    |       |
+| teacher | varchar(20) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
 ```
