@@ -1,7 +1,21 @@
 ## flask
 
+### response
+
+http 响应的三个基本组成部分，即数据或正文、状态码和标头。
+
+flask的应用实例拥有一个make_response函数，可以接受路由函数的返回值(可以是单个值，也可以是有1-3个值的元组),并将其填入响应对象(Response object)中。
+
 ```
+>>> from flask import Flask
+>>> app = Flask(__name__)
+>>> app.make_response('hello, world')
+<Response 12 bytes [200 OK]>
+>>> app.make_response(('hello, world', 222))
+<Response 12 bytes [222 UNKNOWN]>
 ```
+
+flask在创建了代表路由函数返回值的响应对象(Response object)之后，还会做一些处理。包括将响应对象传入自定义的after_request处理程序(handlers)，在这一步，应用还有机会插入或修改标头、更改正文或状态码，如果愿意的话，甚至是启用崭新的响应对象取而代之。最后，flask会获取最终的响应对象，渲染成http响应，并发送给客户端。
 
 ### flask-script
 
