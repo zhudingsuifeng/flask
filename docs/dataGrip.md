@@ -8,6 +8,26 @@ File->DataSource 管理数据库驱动。
 
 在Database视图中展开绿色的+号，添加数据库连接。
 
+### 创建数据库并赋予已知用户权限
+
+```
+mysql -u root
+mysql> create database works;
+mysql> grant all privilege on works.* to 'fly'@'%';
+# 将sql文件导入数据库
+mysql -u fly -p works < ptm_test.sql
+```
+
+### datagrip连接mysql数据库
+
+```
+Host: localhost
+Port: 3306
+Database: works
+User: 数据库用户名
+Password: 用户密码
+```
+
 ### datagrip连接oracle数据库
 
 展开Database,点击右上角绿色+号，DataSource->Oracle.
