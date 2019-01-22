@@ -18,6 +18,7 @@ source venv/bin/activate
 (venv)$pip list                     # 查看当前pip安装的python包
 ```
 [python 数据库支持](https://github.com/zhudingsuifeng/flask/blob/works/docs/pythonDB.md)
+
 ### git delete remote file
 
 ```
@@ -92,7 +93,7 @@ optional arguments:
 # oracle生成orm实体类
 sqlacodegen --flask --tables pos_transmst oracle+cx_oracle://HEX_SPCC:HEX_SPCC@frps.hexcloud.cn:31733/HEXDB > temp.py
 # --flask use Flask-SQLAlchemy columns
-# --tables 指定数据库中的表，注意后面跟着的表名的大小写
+# --tables 指定数据库中的表，注意后面跟着的表名的大小写，多个表之间用逗号隔开
 # > 后面指定python文件名，用来存储orm类
 
 # 查看mysql的端口号
