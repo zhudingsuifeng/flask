@@ -29,7 +29,7 @@ git clone git@github.com:zhudingsuifeng/flask.git
 
 一开始的时候，master分支是一条线，Git用master指向最新的提交，再用HEAD指向master，就能确定当前分支，以及当前分支的提交点：
 
-![init](../imgs/git1.png)
+![init](imgs/git1.png)
 
 每次提交，master分支都会向前移动一步，随着不断提交，master分支的线也越来越长。
 
@@ -50,11 +50,11 @@ git branch
   master
 ```
 
-![dev](../imgs/git2.png)
+![dev](imgs/git2.png)
 
 后续对工作区的修改和提交就针对dev分支了，新提交一次后，dev指针往前移动一步，而master指针不变：
 
-![dev commit](../imgs/git3.png)
+![dev commit](imgs/git3.png)
 
 在dev分支工作完成后，切换回master分支：
 
@@ -63,7 +63,7 @@ git checkout master
 Switched to branch 'master'
 ```
 
-![checkout](../imgs/git6.png)
+![checkout](imgs/git6.png)
 
 合并dev分支的工作成果到master分支：
 
@@ -71,7 +71,7 @@ Switched to branch 'master'
 git merge dev
 ```
 
-![merge](../imgs/git4.png)
+![merge](imgs/git4.png)
 
 git merge命令用于合并指定分支到当前分支。
 
@@ -88,7 +88,7 @@ git branch
 * master
 ```
 
-![delete brancd](../imgs/git5.png)
+![delete brancd](imgs/git5.png)
 
 多人协作
 
