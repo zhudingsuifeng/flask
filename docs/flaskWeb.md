@@ -44,9 +44,30 @@
 
 - flask程序一般都保存在名为app的包中。
 
-- config.py保存着配置。
+- config.py 保存着配置。
 
-- manage.py用于启动项目。
+- manage.py 用于启动项目。
+
+###
+
+如果执行命令时使用绝对路径，__file__就是脚本的绝对路径。
+如果执行命令时使用绝对路径，__file__就是脚本的绝对路径。
+
+```
+import os
+
+print(__file__)           # 可执行文件名
+
+print(os.path.dirname(__file__))   # 相对路径名
+
+print(os.path.abspath(os.path.dirname(__file__))) # 绝对路径名
+
+PROJECT_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), 'application'))
+sys.path.insert(0, PROJECT_PATH)
+# sys.path.append(path) 和 sys.path.insert(0, path) 效果一致
+sys.path.append(PROJECT_PATH)
+# 将模块路径暂时添加到当前模块扫描的路径里，脚本运行后失效。
+```
 
 ### flask-script
 
