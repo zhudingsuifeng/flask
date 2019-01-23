@@ -3,9 +3,10 @@ from sqlalchemy import Column, Date, DateTime, Index, Integer, Numeric, String, 
 from sqlalchemy.schema import FetchedValue
 from flask_sqlalchemy import SQLAlchemy
 
-db = SQLAlchemy()   # 创建SQLAlchemy对象
+from app import db     # db对象在app/__init__.py中创建
 
 class PosTransmst(db.Model):
+    __bind_key__ = 'oracle'
     __tablename__ = 'pos_transmst'
     __table_args__ = (
         db.Index('idx_pos_transmst_bizdt_dept', 'bizdt', 'deptcd'),
@@ -43,6 +44,7 @@ class PosTransmst(db.Model):
     emcd = db.Column(db.String(20))
 
 class PtmDish(db.Model):
+    __bind_key__ = 'mysql'
     __tablename__ = 'ptm_dish'
 
     dish_id = db.Column(db.Integer, primary_key=True)
@@ -68,6 +70,7 @@ class PtmDish(db.Model):
 
 
 class PtmPay(db.Model):
+    __bind_key__ = 'mysql'
     __tablename__ = 'ptm_pay'
 
     pay_id = db.Column(db.Integer, primary_key=True)
@@ -86,6 +89,7 @@ class PtmPay(db.Model):
 
 
 class PtmTrade(db.Model):
+    __bind_key__ = 'mysql'
     __tablename__ = 'ptm_trade'
     __table_args__ = (
         db.Index('g_b_f', 'global_storeid', 'bill_no', 'business_day'),
