@@ -3,15 +3,20 @@
 # mysql+pymysql://username:password@host:port/databasename      # mysql连接方式
 # oracle+cx_oracle://username:password@host:port/databaseSID    # oracle连接方式
 
-DIALECT = 'oralce'
-DRIVER = 'cx_oracle'
-USERNAME = 'HEX_SPCC'
-PASSWORD = 'HEX_SPCC'
-HOST = 'frps.hexcloud.cn'
-PORT = '31733'
-SID = 'HEXDB'
+import os
 
-# 连接字符串变量名
-SQLALCHEMY_DATABASE_URI = '{}+{}://{}:{}@{}:{}/{}?charset=utf8'.format(DIALECT, DRIVER, USERNAME, PASSWORD, HOST, PORT, SID)
+class BaseConfig:
+    SECRET_KEY = os.environ.get('SECRET_KEY', 'flask')
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-TABLENAME = 'POS_TRANSMST'
+# 数据库连接配置
+class DevelopmentConfig(BaseConfig):
+    SQLALCHEMY_DATABASE_URI = 'oracle+cx_oracle://HEX_SPCC:HEX_SPCC@frps.hexcloud.cn:31733/HEXDB'
+    SQLALCHEMY_BINDS = {
+        'oracle': 'oracle+cx_oracle://HEX_SPCC:HEX_SPCC@frps.hexcloud.cn:31733/HEXDB',
+        'mysql': 'mysql+pymysql://fly:huangzongwen_123@localhost/works'
+    }
+
+config = {
+    'development': DevelopmentConfig
+}
