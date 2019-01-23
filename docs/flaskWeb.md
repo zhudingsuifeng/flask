@@ -32,12 +32,8 @@
 │   └── templates
 │       ├── 404.html
 │       ├── 500.html
-│       ├── admin
-│       │   ├── login.html
-│       │   └── register.html
 │       ├── base.html
-│       ├── index.html
-│       └── user.html
+│       └── index.html
 ├── config.py
 ├── manage.py
 ```
@@ -67,7 +63,14 @@ sys.path.insert(0, PROJECT_PATH)
 # sys.path.append(path) 和 sys.path.insert(0, path) 效果一致
 sys.path.append(PROJECT_PATH)
 # 将模块路径暂时添加到当前模块扫描的路径里，脚本运行后失效。
+
+# 获取系统环境变量
+os.environ.get('SECRET_KEY')
 ```
+
+### pip freeze > requirements.txt
+
+导出项目所依赖的包到requirements.txt,不需要收到添加，当需要的时候用 pip instll -r requirements.txt导入即可。
 
 ### flask-script
 
