@@ -44,7 +44,7 @@
 
 - manage.py 用于启动项目。
 
-###
+### __file__
 
 如果执行命令时使用绝对路径，__file__就是脚本的绝对路径。
 如果执行命令时使用绝对路径，__file__就是脚本的绝对路径。
@@ -71,6 +71,8 @@ os.environ.get('SECRET_KEY')
 ### pip freeze > requirements.txt
 
 导出项目所依赖的包到requirements.txt,不需要收到添加，当需要的时候用 pip instll -r requirements.txt导入即可。
+
+### 
 
 ### flask-script
 
