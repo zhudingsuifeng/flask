@@ -1,5 +1,11 @@
 {% extends "bootstrap/base.html" %}
 
+{% block head %}
+{{ super() }}
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+{% endblock %}
+
 {% block title %}Flask{% endblock %}
 <!--{% block blockname %}内容{% endblock %} 定义块，block 开始，后面跟要定义的块的名字(blockname),endblock结束-->
 

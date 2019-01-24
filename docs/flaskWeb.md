@@ -72,7 +72,15 @@ os.environ.get('SECRET_KEY')
 
 导出项目所依赖的包到requirements.txt,不需要收到添加，当需要的时候用 pip instll -r requirements.txt导入即可。
 
-### 
+### 通过在base.html文件中添加下面代码，添加网页图标
+
+```
+{% block head %}
+{{ super() }}
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+{% endblock %}
+```
 
 ### flask-script
 
