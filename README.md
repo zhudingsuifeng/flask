@@ -34,16 +34,19 @@ http://127.0.0.1:5000/sales/oracle?store_id=131101&date=2018-01-03&format=json&e
 
 ```
 http://127.0.0.1:5000/sales/mysql?store_id=131101&date=2018-01-03&format=json&export=false
+```
 
 请求oracle数据库中的数据，指定日期，不导出为文件
 
 ```
 http://127.0.0.1:5000/sales/oracle?date=2018-01-03&format=json&export=false
+```
 
 请求oracle数据库中的数据，指定日期，导出为文件
 
 ```
 http://127.0.0.1:5000/sales/oracle?date=2018-01-03&format=json&export=True
+```
 
 mysql数据库的数据类似
 
