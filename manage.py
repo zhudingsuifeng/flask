@@ -2,7 +2,7 @@
 
 import os
 import os, datetime, json, csv
-from flask import render_template, session, url_for, request, jsonify, Response
+from flask import render_template, session, url_for, request, jsonify, Response, current_app
 from flask_bootstrap import Bootstrap
 from flask_script import Manager
 
@@ -11,6 +11,7 @@ from app.models import PosTransmst
 from config import config
 
 app = create_app(os.getenv('development') or 'development')
+
 manager = Manager(app)
 
 @app.route('/', methods=['GET', 'POST'])
