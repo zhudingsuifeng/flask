@@ -148,7 +148,7 @@ def mysql():
         return "请输入正确的URL"
 
 
-# 前端请求URL为：http://127.0.0.1:5000/sales?store_id=131101&date=2018-01-03&format=json&export=false
+# 前端请求URL为：http://127.0.0.1:5000/sales/both?store_id=131101&date=2018-01-03&format=json&export=false
 @sales.route('/both', methods=['GET'])
 def both():
     info = {"id" : request.args.get('store_id'),
