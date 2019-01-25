@@ -90,3 +90,10 @@ del data[u'年龄']
 book = tablib.Databook((data1,data2))
 book.xls
 ```
+
+### pip freeze
+
+```
+pip freeze > requirements.txt      # 导出项目依赖包到requirements.txt
+pip install -r requirements.txt    # 从requirements.txt导入依赖
+```
