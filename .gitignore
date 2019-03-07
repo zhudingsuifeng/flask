@@ -1,4 +1,7 @@
 venv/
 logs/*
 .vscode
+.idea
+.backroom
 __pycache__
+*.swp
